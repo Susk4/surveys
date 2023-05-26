@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useRegisterMutation } from "../../state/surveysApiSlice";
+import { useNavigate } from "react-router-dom";
+
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const [authRegister] = useRegisterMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
@@ -24,7 +30,18 @@ export default function Register() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
-    console.log(fullName, email, password);
+    try {
+      await authRegister({
+        fullname: fullName,
+        email: email,
+        password: password,
+      }).unwrap();
+
+      navigate("/login", { replace: true });
+    } catch (error) {
+      newErrors.username = "Register error";
+      setErrors(newErrors);
+    }
   };
 
   return (
