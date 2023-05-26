@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function NavStart() {
+  const navigation = useNavigate();
   return (
     <div className="navbar-start">
       <div className="dropdown">
@@ -52,7 +55,12 @@ export default function NavStart() {
           </li>
         </ul>
       </div>
-      <a className="btn btn-ghost normal-case text-xl">Surveys</a>
+      <a
+        className="btn btn-ghost normal-case text-xl"
+        onClick={() => navigation("/")}
+      >
+        Surveys
+      </a>
     </div>
   );
 }

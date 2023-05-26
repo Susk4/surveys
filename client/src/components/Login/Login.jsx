@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../state/authSlice";
+import { useLoginMutation } from "../../state/surveysApiSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const [authLogin] = useLoginMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
@@ -21,6 +29,20 @@ export default function Login() {
     if (Object.keys(newErrors).length > 0) return;
 
     console.log(email, password);
+
+    try {
+      const result = await authLogin({
+        strategy: "local",
+        email: email,
+        password: password,
+      }).unwrap();
+      // console.log(await result);
+      dispatch(login({ user: result.user, token: result.accessToken }));
+      navigate("/", { replace: true });
+    } catch (error) {
+      newErrors.username = "Login error";
+      setErrors(newErrors);
+    }
   };
 
   return (
