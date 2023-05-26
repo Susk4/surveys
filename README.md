@@ -184,7 +184,7 @@ Az egész projektet tömörítsd be, kliensestül, szerverestül, és azt tölts
 [x] Redux használata (kötelező)
 [x] Navigáció megfelelően változik a be- és kijelentkezésnek megfelelően (1pt)
 [x] Főoldal megjelenik (1pt)
-[] Regisztráció működik (1pt)
+[x] Regisztráció működik (1pt)
 [x] Bejelentkezés működik (1pt)
 [] Új kérdőív, Kérdőíveim: csak bejelentkezve érhetőek el (1pt)
 [] Új kérdőív: új kérdőív mentésének helyes működése (2pt)
