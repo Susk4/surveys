@@ -40,6 +40,13 @@ export const surveysApiSlice = createApi({
         body,
       }),
     }),
+    createSurvey: builder.mutation({
+      query: (body) => ({
+        url: "surveys",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -49,3 +56,4 @@ export const surveysApiReducer = surveysApiSlice.reducer;
 // Hooks
 export const { useLoginMutation } = surveysApiSlice;
 export const { useRegisterMutation } = surveysApiSlice;
+export const { useCreateSurveyMutation } = surveysApiSlice;

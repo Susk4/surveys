@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUser, logout } from "../../state/authSlice";
+import NewSurvey from "../NewSurvey/NewSurvey";
 
 export default function NavEnd() {
   const navigation = useNavigate();
@@ -27,6 +28,7 @@ export default function NavEnd() {
       <p className="text-lg">
         Hi <span className="font-bold">{user.email}</span>
       </p>
+      <NewSurvey />
       <a className="btn btn-primary btn-md" onClick={() => dispatch(logout())}>
         Logout
       </a>
