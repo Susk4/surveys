@@ -47,6 +47,12 @@ export const surveysApiSlice = createApi({
         body,
       }),
     }),
+    getSurveys: builder.query({
+      query: (userId) => ({
+        url: `surveys?userId=${userId}`,
+      }),
+      transformResponse: (response) => response.data,
+    }),
   }),
 });
 
@@ -54,6 +60,9 @@ export const surveysApiSlice = createApi({
 export const surveysApiReducer = surveysApiSlice.reducer;
 
 // Hooks
-export const { useLoginMutation } = surveysApiSlice;
-export const { useRegisterMutation } = surveysApiSlice;
-export const { useCreateSurveyMutation } = surveysApiSlice;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useCreateSurveyMutation,
+  useGetSurveysQuery,
+} = surveysApiSlice;
