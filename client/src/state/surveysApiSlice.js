@@ -20,12 +20,6 @@ export const surveysApiSlice = createApi({
   reducerPath: "surveysApi",
   baseQuery,
   endpoints: (builder) => ({
-    /* getPuzzles: builder.query({
-      query: () => ({
-        url: "puzzles",
-      }),
-      transformResponse: (response) => response.data,
-    }), */
     login: builder.mutation({
       query: (body) => ({
         url: "authentication",
@@ -53,6 +47,12 @@ export const surveysApiSlice = createApi({
       }),
       transformResponse: (response) => response.data,
     }),
+    deleteSurvey: builder.mutation({
+      query: (id) => ({
+        url: `surveys/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -65,4 +65,5 @@ export const {
   useRegisterMutation,
   useCreateSurveyMutation,
   useGetSurveysQuery,
+  useDeleteSurveyMutation,
 } = surveysApiSlice;

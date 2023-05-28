@@ -11,7 +11,7 @@ export default function Surveys() {
   const user = useSelector(getLoggedInUser);
 
   console.log(user.id);
-  const { data, isLoading } = useGetSurveysQuery(user.id);
+  const { data, isLoading, refetch } = useGetSurveysQuery(user.id);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -34,12 +34,12 @@ export default function Surveys() {
         <tbody>
           {data.map((survey, index) => {
             return (
-              <tr>
+              <tr key={survey.id}>
                 <th>{index}</th>
                 <td>{survey.name}</td>
                 <td>{new Date(survey.createdAt).toDateString()}</td>
                 <td className="flex justify-end gap-2">
-                  <Delete />
+                  <Delete surveyId={survey.id} refetch={refetch} />
                   <Edit />
                   <Copy />
                   <SurveyAnswers />
