@@ -28,7 +28,6 @@ export default function Login() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
-    console.log(email, password);
 
     try {
       const result = await authLogin({
@@ -36,7 +35,7 @@ export default function Login() {
         email: email,
         password: password,
       }).unwrap();
-      // console.log(await result);
+
       dispatch(login({ user: result.user, token: result.accessToken }));
       navigate("/", { replace: true });
     } catch (error) {

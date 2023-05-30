@@ -53,6 +53,13 @@ export const surveysApiSlice = createApi({
         method: "DELETE",
       }),
     }),
+    patchSurvey: builder.mutation({
+      query: ({ id, ...patch }) => ({
+        url: `surveys/${id}`,
+        method: "PATCH",
+        body: patch,
+      }),
+    }),
   }),
 });
 
@@ -66,4 +73,5 @@ export const {
   useCreateSurveyMutation,
   useGetSurveysQuery,
   useDeleteSurveyMutation,
+  usePatchSurveyMutation,
 } = surveysApiSlice;

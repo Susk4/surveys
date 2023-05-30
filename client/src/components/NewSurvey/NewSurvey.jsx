@@ -19,14 +19,12 @@ export default function NewSurvey() {
     }
     const title = surveyData.split("\n\n")[0];
     const dataSlice = surveyData.split("\n\n").slice(1);
-    console.log(dataSlice);
     if (dataSlice.length === 0) {
       newErrors.push("Survey structure must contain at least one page");
     }
     if (
       dataSlice.some((page) => {
         const questions = page.split("\n").slice(1);
-        console.log(questions);
         return questions.length === 0;
       })
     ) {
@@ -40,7 +38,6 @@ export default function NewSurvey() {
         name: title,
         content: surveyData.substring(surveyData.indexOf("\n\n") + 2),
       };
-      console.log(body);
       await createSurvey(body).unwrap();
       try {
       } catch (error) {

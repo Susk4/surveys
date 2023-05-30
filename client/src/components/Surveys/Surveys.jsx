@@ -10,7 +10,7 @@ import SurveyAnswers from "./SurveyAnswers";
 export default function Surveys() {
   const user = useSelector(getLoggedInUser);
 
-  console.log(user.id);
+
   const { data, isLoading, refetch } = useGetSurveysQuery(user.id);
 
   if (isLoading) {
@@ -40,8 +40,12 @@ export default function Surveys() {
                 <td>{new Date(survey.createdAt).toDateString()}</td>
                 <td className="flex justify-end gap-2">
                   <Delete surveyId={survey.id} refetch={refetch} />
-                  <Edit />
-                  <Copy />
+                  <Edit
+                    surveyName={survey.name}
+                    surveyContent={survey.content}
+                    surveyId={survey.id}
+                  />
+                  <Copy surveyHash={survey.hash} />
                   <SurveyAnswers />
                 </td>
               </tr>

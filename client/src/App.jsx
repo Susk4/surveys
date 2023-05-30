@@ -6,6 +6,7 @@ import Register from "./components/Register/Register";
 import { WithProtected } from "./components/Layout/WithProtected";
 import Surveys from "./components/Surveys/Surveys";
 import Answers from "./components/Answers/Answers";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
               element={
                 <WithProtected>
                   <Surveys />
+                </WithProtected>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <WithProtected>
+                  <Profile />
                 </WithProtected>
               }
             />
