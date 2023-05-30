@@ -189,7 +189,7 @@ Az egész projektet tömörítsd be, kliensestül, szerverestül, és azt tölts
 - [x] Új kérdőív, Kérdőíveim: csak bejelentkezve érhetőek el (1pt)
 - [x] Új kérdőív: új kérdőív mentésének helyes működése (2pt)
 - [x] Kérdőíveim: megjelennek a kérdőívek az elérhető funkciókkal (2pt)
-- [] Kérdőíveim: módosítás helyes működése (2pt)
+- [x] Kérdőíveim: módosítás helyes működése (2pt)
 - [x] Kérdőíveim: törlés helyes működése (2pt)
 - [x] Kérdőíveim: hivatkozás helyes működése (1pt)
 - [] Kérdőív: a kérdőív kérdései megjelennek (3pt)
